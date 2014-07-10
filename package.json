@@ -9,11 +9,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.8.5",
+    "gulp": "^3.8.6",
     "gulp-rename": "^1.2.0",
     "gulp-concat": "^2.2.0",
     "gulp-uglify": "^0.3.1",
     "gulp-jshint": "^1.6.4",
-    "gulp-sass": "^0.7.2"
+    "gulp-sass": "^0.7.2",
+    "gulp-haml": "0.0.8"
   }
 }

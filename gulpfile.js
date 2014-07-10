@@ -7,6 +7,7 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
+var haml = require('gulp-haml');
 
 // Lint Task
 gulp.task('lint', function() {
@@ -32,10 +33,17 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('./build/js'));
 });
 
+gulp.task('haml', function(){
+  gulp.src('./source/**/*.haml')
+    .pipe(haml())
+    .pipe(gulp.dest('./build'))
+})
+
 // Watch Files For Changes
 gulp.task('watch', function() {
     gulp.watch('./source/js/*.js', ['lint', 'scripts']);
     gulp.watch('./source/scss/*.scss', ['sass']);
+    gulp.watch('./source/**/*.haml', ['haml'])
 });
 
 // Default Task
