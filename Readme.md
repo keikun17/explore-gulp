@@ -1,3 +1,6 @@
-Source :
+Yet another Single Page App skeleton
 
-  http://travismaynard.com/writing/getting-started-with-gulp
+  - gulp
+  - haml
+  - sass
+  - livereload
