@@ -35,9 +35,9 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('haml', function(){
-  gulp.src('./source/**/*.haml')
-    .pipe(haml())
-    .pipe(gulp.dest('./build'))
+  return gulp.src('./source/**/*.haml')
+        .pipe(haml())
+        .pipe(gulp.dest('./build'))
 })
 
 // Watch Files For Changes
@@ -59,13 +59,13 @@ gulp.task('connect', function(){
 });
 
 gulp.task('reload', function(){
-  gulp.src('./build/**/*.html')
-  .pipe(connect.reload());
+  return gulp.src('./build/**/*.html')
+        .pipe(connect.reload());
 })
 
 gulp.task('move_html', function(){
-  gulp.src('./source/**/*.html')
-  .pipe(gulp.dest('./build'))
+  return gulp.src('./source/**/*.html')
+        .pipe(gulp.dest('./build'))
 })
 
 // Default Task
