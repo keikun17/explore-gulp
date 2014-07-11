@@ -8,6 +8,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var haml = require('gulp-haml');
+var connect = require('gulp-connect');
 
 // Lint Task
 gulp.task('lint', function() {
@@ -46,5 +47,23 @@ gulp.task('watch', function() {
     gulp.watch('./source/**/*.haml', ['haml'])
 });
 
+// Server with Livereload
+gulp.task('connect', function(){
+  connect.server({
+    root: 'build',
+    livereload: true
+  })
+});
+
+gulp.task('reload', function(){
+  gulp.src('./build/**/*.html')
+  .pipe(connect.reload());
+})
+
+gulp.task('move_html', function(){
+  gulp.src('./source/**/*.html')
+  .pipe(gulp.dest('./build'))
+})
+
 // Default Task
-gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);
+gulp.task('default', ['connect', 'haml', 'move_html', 'lint', 'sass', 'scripts', 'watch']);
