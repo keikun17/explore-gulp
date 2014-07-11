@@ -42,9 +42,12 @@ gulp.task('haml', function(){
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('./source/js/*.js', ['lint', 'scripts']);
-    gulp.watch('./source/scss/*.scss', ['sass']);
-    gulp.watch('./source/**/*.haml', ['haml'])
+    gulp.watch('source/js/*.js', ['lint', 'scripts']);
+    gulp.watch('source/scss/*.scss', ['sass']);
+    gulp.watch('source/**/*.haml', ['haml']);
+    gulp.watch('source/**/*.html', ['move_html']);
+
+    gulp.watch('build/**/*.html', ['reload']);
 });
 
 // Server with Livereload
