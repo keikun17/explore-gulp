@@ -7,7 +7,7 @@ var sass    = require('gulp-sass');
 var concat  = require('gulp-concat');
 var uglify  = require('gulp-uglify');
 var rename  = require('gulp-rename');
-var haml    = require('gulp-haml');
+var haml    = require('gulp-ruby-haml');
 var connect = require('gulp-connect');
 
 // Lint Task
