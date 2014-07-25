@@ -41,6 +41,7 @@ gulp.task('scripts', function() {
 gulp.task('haml', function(){
   return gulp.src('./source/**/*.haml')
         .pipe(haml())
+        .pipe(plumber())
         .pipe(gulp.dest('./build'))
 })
 
