@@ -9,11 +9,14 @@ var uglify  = require('gulp-uglify');
 var rename  = require('gulp-rename');
 var haml    = require('gulp-ruby-haml');
 var connect = require('gulp-connect');
+var watch  = require('gulp-watch');
+var plumber = require('gulp-plumber');
 
 // Lint Task
 gulp.task('lint', function() {
     return gulp.src('./source/js/*.js')
         .pipe(jshint())
+        .pipe(plumber())
         .pipe(jshint.reporter('default'));
 });
 
