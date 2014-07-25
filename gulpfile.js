@@ -22,9 +22,10 @@ gulp.task('lint', function() {
 
 // Compile Our Sass
 gulp.task('sass', function() {
-    return gulp.src('./source/scss/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('./build/css'));
+  watch({glob: 'source/scss/**/*.scss'})
+    .pipe(plumber())
+    .pipe( sass( { errLogToConsole: true, sourceComments: 'map', sourceMap: 'sass'} ) )
+    .pipe(gulp.dest('./build/css'));
 });
 
 // Concatenate & Minify JS
