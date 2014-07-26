@@ -11,6 +11,13 @@ var haml    = require('gulp-ruby-haml');
 var connect = require('gulp-connect');
 var watch  = require('gulp-watch');
 var plumber = require('gulp-plumber');
+var gulpBowerFiles = require('gulp-bower-files')
+
+
+// Build bower files
+gulp.task("bower-files", function(){
+  gulpBowerFiles().pipe(gulp.dest("build/vendor"));
+})
 
 // Lint Task
 gulp.task('lint', function() {
@@ -73,4 +80,4 @@ gulp.task('move_html', function(){
 })
 
 // Default Task
-gulp.task('default', ['connect', 'haml', 'move_html', 'lint', 'sass', 'scripts', 'watch']);
+gulp.task('default', ['bower-files', 'connect', 'haml', 'move_html', 'lint', 'sass', 'scripts', 'watch']);
