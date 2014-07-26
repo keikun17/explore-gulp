@@ -11,7 +11,8 @@ var haml    = require('gulp-ruby-haml');
 var connect = require('gulp-connect');
 var watch  = require('gulp-watch');
 var plumber = require('gulp-plumber');
-var gulpBowerFiles = require('gulp-bower-files')
+var gulpBowerFiles = require('gulp-bower-files');
+var browserify = require('gulp-browserify');
 
 
 // Build bower files
@@ -35,13 +36,14 @@ gulp.task('sass', function() {
     .pipe(gulp.dest('./build/css'));
 });
 
-// Concatenate & Minify JS
+// Browserify & Minify JS
 gulp.task('scripts', function() {
     return gulp.src('./source/js/*.js')
         .pipe(plumber())
-        .pipe(concat('all.js'))
+        .pipe(browserify())
+        // .pipe(concat('all.js'))
         .pipe(gulp.dest('./build/js'))
-        .pipe(rename('all.min.js'))
+        // .pipe(rename('all.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./build/js'));
 });
