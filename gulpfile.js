@@ -21,9 +21,9 @@ gulp.task("bower-files", function(){
 
 // Lint Task
 gulp.task('lint', function() {
-    return gulp.src('./source/js/*.js')
-        .pipe(jshint())
+    gulp.src('./source/js/*.js')
         .pipe(plumber())
+        .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
 
@@ -38,6 +38,7 @@ gulp.task('sass', function() {
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
     return gulp.src('./source/js/*.js')
+        .pipe(plumber())
         .pipe(concat('all.js'))
         .pipe(gulp.dest('./build/js'))
         .pipe(rename('all.min.js'))
@@ -75,8 +76,9 @@ gulp.task('reload', function(){
 })
 
 gulp.task('move_html', function(){
-  return gulp.src('./source/**/*.html')
-        .pipe(gulp.dest('./build'))
+  gulp.src('./source/**/*.html')
+    .pipe(plumber())
+    .pipe(gulp.dest('./build'))
 })
 
 // Default Task
