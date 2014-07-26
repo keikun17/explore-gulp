@@ -40,8 +40,8 @@ gulp.task('scripts', function() {
 
 gulp.task('haml', function(){
   return gulp.src('./source/**/*.haml')
-        .pipe(haml())
         .pipe(plumber())
+        .pipe(haml())
         .pipe(gulp.dest('./build'))
 })
 
