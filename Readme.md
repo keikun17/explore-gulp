@@ -4,3 +4,5 @@ Yet another Single Page App skeleton
   - haml
   - sass
   - livereload
+  - bower
+  - watcher (using gulp-watch)
